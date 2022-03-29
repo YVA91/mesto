@@ -6,12 +6,11 @@
   background-color: #fff;
   box-sizing: border-box;
   position: relative;
-  
 }
 
 @media screen and (max-width: 560px) {
   .popup__container {
-  width: 282px;
-  height: 322px;
-}
+    width: 282px;
+    height: 322px;
+  }
 }

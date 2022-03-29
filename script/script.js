@@ -9,18 +9,13 @@ let click = document.querySelector('.popup__close');
 click.addEventListener('click', function () {
   let popup = document.querySelector('.popup_opened')
   popup.classList.remove('popup_opened');
-}); 
-
-
+});
 
 let like = document.querySelector('.photo__item-like');
 function clickLike() {
   let likeActive = document.querySelector('.photo__item-like')
   likeActive.classList.add('photo__item-like_actve');
 }
-
-
-
 
 function closePopup() {
   let popup = document.querySelector('.popup_opened')
@@ -38,14 +33,7 @@ function formSubmitHandler(evt) {
   let jobInput = document.querySelector('.popup__field-job'); 
   userName.textContent = nameInput.value;
   userJop.textContent = jobInput.value;
-
   closePopup();
-  
-
-  
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
-
-
-//onclick = "clickLike()"
