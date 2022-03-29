@@ -29,8 +29,8 @@ let userJop = document.querySelector('.profile__profession');
 
 function formSubmitHandler(evt) {
   evt.preventDefault(); 
-  let nameInput = document.querySelector('.popup__field-name'); 
-  let jobInput = document.querySelector('.popup__field-job'); 
+  let nameInput = document.querySelector('.pupup__field-name'); 
+  let jobInput = document.querySelector('.pupup__field-job'); 
   userName.textContent = nameInput.value;
   userJop.textContent = jobInput.value;
   closePopup();
