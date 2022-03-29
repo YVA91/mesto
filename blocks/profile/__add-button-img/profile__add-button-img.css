@@ -3,7 +3,7 @@
   transition: opacity .5s;
 }
 
-.profile__add-button-img {
+.profile__add-button-img:hover {
   opacity: .6;
 }
 
