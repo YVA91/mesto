@@ -1,5 +1,18 @@
 .photo__item-like {
   width: 22px;
   height: 19px;
-
+  margin: 5px 5px 0 25px;
+  background-image: url(../../../images/like.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 19px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity .5s;
 }
+
+.photo__item-like:hover {
+  opacity: .5;
+}
+
