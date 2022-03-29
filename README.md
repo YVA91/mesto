@@ -1,7 +1,7 @@
 # Учебный проект "Место"
 Проект выполнен на основании макета: https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1
 
-Ссылка на проект: https://yva91.github.io/mesto/index.html
+Ссылка на проект: https://yva91.github.io/mesto/
 
 Цель данного проекта: практическое применение ранее полученных знаний адаптивной вёрстке страницы сайта и внедрение методов js-script
 
