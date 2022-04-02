@@ -1,5 +1,9 @@
 .profile__edit-button {
+  background: url(../../../images/EditButton.png);
+  border: none;
+  background-size: cover;  
   margin: 0 0 0 18px;
+  padding: 0;
   width: 24px;
   height: 24px;
   cursor: pointer;
@@ -9,6 +13,7 @@
 .profile__edit-button:hover {
   opacity: .6;
 }
+
 
 @media screen and (max-width: 425px) {
   .profile__edit-button {

@@ -17,13 +17,11 @@
         <div>
           <div class="profile__name-edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <img class="profile__edit-button" src="images/EditButton.png" alt="редактировать">
+            <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
           </div>
           <p class="profile__profession">Исследователь океана</p>
         </div>
-        <div class="profile__add-button">
-          <img class="profile__add-button-img" src="images/Vector1.svg" alt="добавить">
-        </div>
+        <button class="profile__add-button" type="button" aria-label="добавить"></button>
       </section>
 
       <section>
@@ -32,48 +30,42 @@
             <img class="photo__item-img" src="images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
             <div class="photo__item-signature">
               <h2 class="photo__item-title">Карачаевск</h2>
-              <div class="photo__item-like">
-              </div>
+              <button class="photo__item-like" type="button" aria-label="лайк"></button>
             </div>
           </li>
           <li class="photo__item">
             <img class="photo__item-img" src="images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
             <div class="photo__item-signature">
               <h2 class="photo__item-title">Гора Эльбрус</h2>
-              <div class="photo__item-like">
-              </div>
+              <button class="photo__item-like" type="button" aria-label="лайк"></button>
             </div>
           </li>
           <li class="photo__item">
             <img class="photo__item-img" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
             <div class="photo__item-signature">
               <h2 class="photo__item-title">Домбай</h2>
-              <div class="photo__item-like">
-              </div>
+              <button class="photo__item-like" type="button" aria-label="лайк"></button>
             </div>
           </li>
           <li class="photo__item">
             <img class="photo__item-img" src="images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
             <div class="photo__item-signature">
               <h2 class="photo__item-title">Гора Эльбрус</h2>
-              <div class="photo__item-like">
-              </div>
+              <button class="photo__item-like" type="button" aria-label="лайк"></button>
             </div>
           </li>
           <li class="photo__item">
             <img class="photo__item-img" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
             <div class="photo__item-signature">
               <h2 class="photo__item-title">Домбай</h2>
-              <div class="photo__item-like">
-              </div>
+              <button class="photo__item-like" type="button" aria-label="лайк"></button>
             </div>
           </li>
           <li class="photo__item">
             <img class="photo__item-img" src="images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
             <div class="photo__item-signature">
               <h2 class="photo__item-title">Карачаево-Черкессия</h2>
-              <div class="photo__item-like">
-              </div>
+              <button class="photo__item-like" type="button" aria-label="лайк"></button>
             </div>
           </li>
         </ul>
@@ -81,10 +73,10 @@
 
       <section class="popup">
         <div class="popup__container">
-          <img class="popup__close" src="images/CloseIcon.png" alt="Закрыть">
-          <form class="popup__form">
+          <button class="popup__close" type="reset" aria-label="закрыть"></button>
+          <form name="profile" class="popup__form">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <div>
+            <fieldset class="popup__form-item">
               <label class="popup__field">
                 <input class="popup__field-name" type="text" value="Жак-Ив Кусто" placeholder="Имя" minlength="2"
                 maxlength="60" required>
@@ -93,7 +85,7 @@
                 <input class="popup__field-job" type="text" value="Исследователь океана" placeholder="О себе"
                 minlength="2" maxlength="60" required>
               </label>
-            </div>
+            </fieldset>
             <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
           </form>
         </div>

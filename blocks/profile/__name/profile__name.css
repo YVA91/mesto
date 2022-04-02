@@ -5,6 +5,10 @@
   line-height: 48px;
   color: #fff;
   margin: 0;
+  max-width: 294px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
@@ -17,5 +21,6 @@
   .profile__name {
     font-size: 27px;
     line-height: 33px;
+    padding: 0 0 0 28px ;
   }
 }
