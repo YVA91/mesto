@@ -1,5 +1,5 @@
-let nameInput = document.querySelector('#name');
-let jobInput = document.querySelector('#job'); 
+let nameInput = document.querySelector('.name');
+let jobInput = document.querySelector('.job'); 
 let formElement = document.querySelector('.popup__form');
 let userName = document.querySelector('.profile__name');
 let userJop = document.querySelector('.profile__profession'); 
