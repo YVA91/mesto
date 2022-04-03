@@ -3,3 +3,9 @@
   align-items: baseline;
   margin: 0 0 16px 0;
 }
+
+@media screen and (max-width: 425px) {
+  .profile__name-edit {
+    justify-content: center;
+  }
+}
