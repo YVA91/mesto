@@ -11,7 +11,6 @@
       <img class="header__logo" src="images/Vector.svg" alt="логотип">
     </header>
     <main class="content">
-    
       <section class="profile">
         <img class="profile__avatar" src="images/image.png" alt="аватарка">
         <div>
@@ -23,55 +22,21 @@
         </div>
         <button class="profile__add-button" type="button" aria-label="добавить"></button>
       </section>
-
       <section>
         <ul class="photo">
-          <li class="photo__item">
-            <img class="photo__item-img" src="images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-            <div class="photo__item-signature">
-              <h2 class="photo__item-title">Карачаевск</h2>
-              <button class="photo__item-like" type="button" aria-label="лайк"></button>
-            </div>
-          </li>
-          <li class="photo__item">
-            <img class="photo__item-img" src="images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-            <div class="photo__item-signature">
-              <h2 class="photo__item-title">Гора Эльбрус</h2>
-              <button class="photo__item-like" type="button" aria-label="лайк"></button>
-            </div>
-          </li>
-          <li class="photo__item">
-            <img class="photo__item-img" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-            <div class="photo__item-signature">
-              <h2 class="photo__item-title">Домбай</h2>
-              <button class="photo__item-like" type="button" aria-label="лайк"></button>
-            </div>
-          </li>
-          <li class="photo__item">
-            <img class="photo__item-img" src="images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-            <div class="photo__item-signature">
-              <h2 class="photo__item-title">Гора Эльбрус</h2>
-              <button class="photo__item-like" type="button" aria-label="лайк"></button>
-            </div>
-          </li>
-          <li class="photo__item">
-            <img class="photo__item-img" src="images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-            <div class="photo__item-signature">
-              <h2 class="photo__item-title">Домбай</h2>
-              <button class="photo__item-like" type="button" aria-label="лайк"></button>
-            </div>
-          </li>
-          <li class="photo__item">
-            <img class="photo__item-img" src="images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-            <div class="photo__item-signature">
-              <h2 class="photo__item-title">Карачаево-Черкессия</h2>
-              <button class="photo__item-like" type="button" aria-label="лайк"></button>
-            </div>
-          </li>
+          <template class="photo-template">
+            <li class="photo__item">
+              <img class="photo__item-img" src="" alt="">
+              <button class="photo__remove" type="button" aria-label="удалить фото"></button>
+              <div class="photo__item-signature">
+                <h2 class="photo__item-title"></h2>
+                <button class="photo__item-like" type="button" aria-label="лайк"></button>
+              </div>
+            </li>
+          </template>
         </ul>
       </section>
-
-      <section class="popup">
+     <section class="popup popup_new-name">
         <div class="popup__container">
           <button class="popup__close" type="reset" aria-label="закрыть"></button>
           <form name="profile" class="popup__form">
@@ -90,12 +55,38 @@
           </form>
         </div>
       </section>
+      <section class="popup popup_new-photo">
+        <div class="popup__container">
+          <button class="popup__close popup__close_photo" type="reset" aria-label="закрыть"></button>
+          <form name="profile" class="popup__form">
+            <h2 class="popup__title">Новое место</h2>
+            <fieldset class="popup__form-item">
+              <label class="popup__field">
+                <input class="popup__field-item" id="title" type="text" value="" placeholder="Название" minlength="2"
+                  maxlength="60" required>
+              </label>
+              <label class="popup__field">
+                <input class="popup__field-item" id="link" type="text" value="" placeholder="Ссылка на картинку"
+                  minlength="2" maxlength="180" required>
+              </label>
+            </fieldset>
+            <button class="popup__save" type="submit"  aria-label="сохранить">Сохранить</button>
+          </form>
+        </div>
+      </section>
+      <section class="popup popup_open-photo">
+          <figure class="popup__figure">
+            <button class="popup__close popup__close_img" type="reset" aria-label="закрыть"></button>
+            <img class="popup__item-img" src="#" alt="#">
+            <figcaption>
+              <h2 class="popup__item-title">#</h2>
+            </figcaption>
+          </figure>
+      </section>
     </main>
-
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-
   <script src="script/script.js"></script>
   </body>
 </html>
