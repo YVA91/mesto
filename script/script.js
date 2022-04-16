@@ -77,7 +77,7 @@ const newPhoto = document.querySelector('.popup_new-photo');
 const newTitle = document.querySelector('#title');
 const newLink = document.querySelector('#link'); 
 const openImgPopup = document.querySelector('.popup_open-photo');
-const lookBigImg = document.querySelector('.popup__item-img');
+const lookPhotoBig = document.querySelector('.popup__item-img');
 const figcaption = document.querySelector('.popup__item-title');
 const closeBigPhoto = document.querySelector('.popup__close_img');
 
@@ -93,14 +93,13 @@ function getElement(element) {
   const deleteButton = getPhoto.querySelector('.photo__remove');
   const elementImg = getPhoto.querySelector('.photo__item-img')
 
-
   function lookPhoto() {
     openImgPopup.classList.add('popup_opened');
   };
 
   function putPhoto() {
-    lookBigImg.src = elementImg.src;
-    lookBigImg.alt = elementImg.alt;
+    lookPhotoBig.src = element.link;
+    lookPhotoBig.alt = element.link;
     figcaption.textContent = element.name;
     lookPhoto();
   };
@@ -129,8 +128,8 @@ function handleAddElement(evt) {
 newPhoto.addEventListener('submit', handleAddElement);
 
 function render() {
-  const html = initialCards.map(getElement);
-  photoList.append(...html);
+  const getHtmlElement = initialCards.map(getElement);
+  photoList.append(...getHtmlElement);
 };
 
 render()
