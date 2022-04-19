@@ -80,11 +80,9 @@ function getElementPhoto(name, link) {
   photoItemImgAttribute.alt = name;
 
   const deleteButton = templateNewPhoto.querySelector('.photo__remove');
-  const elementImg = templateNewPhoto.querySelector('.photo__item-img')
 
   deleteButton.addEventListener('click', removeElement);
-  elementImg.addEventListener('click', handleOpenPhoto);
-  buttonCloseBigPhoto.addEventListener('click', closePopup);
+  photoItemImgAttribute.addEventListener('click', handleOpenPhoto);
   templateNewPhoto.querySelector('.photo__item-like').addEventListener('click', handleLike)
 
   return templateNewPhoto;
@@ -118,6 +116,7 @@ formNewName.addEventListener('submit', handleSaveNewName);
 newPhoto.addEventListener('submit', handleAddElement);
 buttonNewName.addEventListener('click', () => openPopup(formNewName));
 buttonNewPlace.addEventListener('click', () => openPopup(formNewPhoto)); 
+buttonCloseBigPhoto.addEventListener('click', closePopup);
 
 
 initialCards.forEach(element => {
