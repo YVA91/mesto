@@ -36,39 +36,35 @@
           </template>
         </ul>
       </section>
+
+
      <section class="popup popup_new-name">
         <div class="popup__container">
           <button class="popup__close" type="reset" aria-label="закрыть"></button>
           <form name="profile" class="popup__form">
             <h2 class="popup__title">Редактировать профиль</h2>
             <fieldset class="popup__form-item">
-              <label class="popup__field">
                 <input class="popup__field-item" id="name" type="text" value="Жак-Ив Кусто" placeholder="Имя" minlength="2"
                 maxlength="60" required>
-              </label>
-              <label class="popup__field">
                 <input class="popup__field-item" id="job" type="text" value="Исследователь океана" placeholder="О себе"
                 minlength="2" maxlength="60" required>
-              </label>
             </fieldset>
             <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
           </form>
         </div>
       </section>
+
+
       <section class="popup popup_new-photo">
         <div class="popup__container">
           <button class="popup__close popup__close_photo" type="reset" aria-label="закрыть"></button>
           <form name="profile" class="popup__form" id="resetformnewplace">
             <h2 class="popup__title">Новое место</h2>
             <fieldset class="popup__form-item">
-              <label class="popup__field">
                 <input class="popup__field-item" id="title" type="text" value="" placeholder="Название" minlength="2"
                   maxlength="60" required>
-              </label>
-              <label class="popup__field">
-                <input class="popup__field-item" id="link" type="text" value="" placeholder="Ссылка на картинку"
+                <input class="popup__field-item" id="link" type="url" value="" placeholder="Ссылка на картинку"
                   minlength="2" maxlength="180" required>
-              </label>
             </fieldset>
             <button class="popup__save" type="submit"  aria-label="сохранить">Сохранить</button>
           </form>

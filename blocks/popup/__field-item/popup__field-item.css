@@ -1,6 +1,11 @@
 .popup__field-item {
-  padding: 0;
+  display: block;
+  padding: 0 0 10px 0;
   border: none;
+  width: 100%;
+  margin: 0 0 30px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   outline:none;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 400;
@@ -8,4 +13,12 @@
   line-height: 17px;
   box-sizing: border-box;
   width: 100%;
+}
+
+.popup__field-item:last-child {
+  margin: 0;
+}
+
+.popup__field-item:invalid {
+  border-bottom: 1px solid #FF0000;
 }
