@@ -21,6 +21,7 @@ const formNameReset = document.querySelector('#resetformnewname')
 const popupForm = document.querySelectorAll('.popup');
 
 function openPopup(item) {
+
   item.classList.add('popup_opened');
   document.addEventListener('keydown', handleEcsClosePopup)
 };
@@ -96,7 +97,7 @@ function removeElement(evt) {
   removePhoto.remove();
 }
 
-function handleOpenPopupNewName () {
+function handleOpenPopupNewName() {
   nameInput.value = userName.textContent;
   jobInput.value = userJop.textContent;
   openPopup(formNewName)
