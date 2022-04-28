@@ -37,39 +37,50 @@
         </ul>
       </section>
 
-
      <section class="popup popup_new-name">
         <div class="popup__container">
           <button class="popup__close" type="reset" aria-label="закрыть"></button>
-          <form name="profile" class="popup__form">
+          <form name="profile" class="popup__form popup1" id="resetformnewname" novalidate>
             <h2 class="popup__title">Редактировать профиль</h2>
             <fieldset class="popup__form-item">
-                <input class="popup__field-item" id="name" type="text" value="Жак-Ив Кусто" placeholder="Имя" minlength="2"
+              <label class="popup__field">
+                <input class="popup__field-item input1" id="name" type="text" value="Жак-Ив Кусто" placeholder="Имя" minlength="2"
                 maxlength="60" required>
-                <input class="popup__field-item" id="job" type="text" value="Исследователь океана" placeholder="О себе"
+                <span class="popup__field-item-error" id="name-error"></span>
+              </label>
+              <label class="popup__field">
+                <input class="popup__field-item input" id="job" type="text" value="Исследователь океана" placeholder="О себе"
                 minlength="2" maxlength="60" required>
+                <span class="popup__field-item-error" id="job-error"></span>
+              </label>
             </fieldset>
             <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
           </form>
         </div>
       </section>
 
-
       <section class="popup popup_new-photo">
         <div class="popup__container">
           <button class="popup__close popup__close_photo" type="reset" aria-label="закрыть"></button>
-          <form name="profile" class="popup__form" id="resetformnewplace">
+          <form name="profile" class="popup__form" id="resetformnewplace" novalidate>
             <h2 class="popup__title">Новое место</h2>
             <fieldset class="popup__form-item">
+              <label class="popup__field">
                 <input class="popup__field-item" id="title" type="text" value="" placeholder="Название" minlength="2"
-                  maxlength="60" required>
-                <input class="popup__field-item" id="link" type="url" value="" placeholder="Ссылка на картинку"
-                  minlength="2" maxlength="180" required>
+                  maxlength="40" required>
+                <span class="popup__field-item-error" id="title-error"></span>
+              </label>
+              <label class="popup__field">
+                <input class="popup__field-item" id="link" type="text" value="" placeholder="Ссылка на картинку"
+                  minlength="2" maxlength="200" required>
+                <span class="popup__field-item-error" id="link-error"></span>
+              </label>
             </fieldset>
             <button class="popup__save" type="submit"  aria-label="сохранить">Сохранить</button>
           </form>
         </div>
       </section>
+      
       <section class="popup popup_open-photo">
           <figure class="popup__figure">
             <button class="popup__close popup__close_img" type="reset" aria-label="закрыть"></button>
@@ -83,6 +94,8 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+    <script src="script/cards.js"></script>
+    <script src="script/validate.js"></script>
     <script src="script/script.js"></script>
   </body>
 </html>

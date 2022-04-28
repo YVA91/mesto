@@ -16,33 +16,8 @@ const buttonOpenImgPopup = document.querySelector('.popup_open-photo');
 const photoBig = document.querySelector('.popup__item-img');
 const figcaption = document.querySelector('.popup__item-title');
 const buttonCloseBigPhoto = document.querySelector('.popup__close_img');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
+const formPlaceReset = document.querySelector('#resetformnewplace')
+const formNameReset = document.querySelector('#resetformnewname')
 
 function openPopup(item) {
   item.classList.add('popup_opened');
@@ -58,13 +33,15 @@ function handleEcsClosePopup (evt) {
   if (evt.key === "Escape") {
     const escClosePopup = document.querySelector('.popup_opened');
     closePopup(escClosePopup)
+    formPlaceReset.reset();
+    formNameReset.reset();
   }
 }
 
 buttonCloseFormNewPhoto.addEventListener('click', handleCloseFormNewPhoto)
 
 function handleCloseFormNewPhoto() {
-  document.querySelector('#resetformnewplace').reset();
+  formPlaceReset.reset();
   closePopup(formNewPhoto)
 };
 
@@ -128,7 +105,6 @@ formNewPhoto.addEventListener('submit', handleAddElement);
 buttonNewName.addEventListener('click', () => openPopup(formNewName));
 buttonNewPlace.addEventListener('click', () => openPopup(formNewPhoto)); 
 buttonCloseBigPhoto.addEventListener('click', () => closePopup(buttonOpenImgPopup));
-
 
 initialCards.forEach(element => {
   photoList.append(getElementPhoto(element.name, element.link));
