@@ -18,6 +18,7 @@ const figcaption = document.querySelector('.popup__item-title');
 const buttonCloseBigPhoto = document.querySelector('.popup__close_img');
 const formPlaceReset = document.querySelector('#resetformnewplace')
 const formNameReset = document.querySelector('#resetformnewname')
+const popupForm = document.querySelectorAll('.popup');
 
 function openPopup(item) {
   item.classList.add('popup_opened');
@@ -33,8 +34,6 @@ function handleEcsClosePopup (evt) {
   if (evt.key === "Escape") {
     const escClosePopup = document.querySelector('.popup_opened');
     closePopup(escClosePopup)
-    formPlaceReset.reset();
-    formNameReset.reset();
   }
 }
 
@@ -48,8 +47,6 @@ function handleCloseFormNewPhoto() {
 buttonCloseFormNewName.addEventListener('click', handleCloseFormNewName)
 
 function handleCloseFormNewName() {
-  nameInput.value = userName.textContent;
-  jobInput.value = userJop.textContent;
   closePopup(formNewName)
 };
 
@@ -87,7 +84,6 @@ function handleAddElement(evt) {
   evt.preventDefault();
   const putPlace = getElementPhoto(newTitle.value, newLink.value);
   photoList.prepend(putPlace);
-  document.querySelector('#resetformnewplace').reset();
   closePopup(formNewPhoto);
 }
 
@@ -100,13 +96,33 @@ function removeElement(evt) {
   removePhoto.remove();
 }
 
+function handleOpenPopupNewName () {
+  nameInput.value = userName.textContent;
+  jobInput.value = userJop.textContent;
+  openPopup(formNewName)
+}
+
+function handleOpenPopupNewPlace () {
+  formPlaceReset.reset()
+  openPopup(formNewPhoto)
+}
+
+buttonNewName.addEventListener('click', handleOpenPopupNewName);
+buttonNewPlace.addEventListener('click', handleOpenPopupNewPlace);
 formNewName.addEventListener('submit', handleSaveNewName);
 formNewPhoto.addEventListener('submit', handleAddElement);
-buttonNewName.addEventListener('click', () => openPopup(formNewName));
 buttonNewPlace.addEventListener('click', () => openPopup(formNewPhoto)); 
 buttonCloseBigPhoto.addEventListener('click', () => closePopup(buttonOpenImgPopup));
 
 initialCards.forEach(element => {
   photoList.append(getElementPhoto(element.name, element.link));
+});
+
+popupForm.forEach((element) => { 
+  element.addEventListener('click', (e) => {
+      if (e.target.classList.contains('popup_opened')) {
+          closePopup(element);
+      }
+  });
 });
 

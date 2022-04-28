@@ -1,62 +1,45 @@
-/*function enableValidation(){
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  }); */
 
-
-function enableValidation(config) { 
-  const form = document.querySelector(config.formSelector);
-  const imput = form.querySelectorAll(config.inputSelector);
-
-  imput.forEach(element => {
-    element.addEventListener('imput', handleFormImput);
+function enableValidation(config) {
+  const form = Array.from(document.querySelectorAll(config.formSelector));
+  form.forEach((formElement) => {
+    setEventListeners(config, formElement);
   });
+};
 
-  form.addEventListener('submit', (event) => handleFormSubmit(event, form));
+const setEventListeners = (config, formElement) => {
+  const input = Array.from(formElement.querySelectorAll(config.inputSelector));
+  input.forEach((formElement) => {
+    formElement.addEventListener('input', (evt) => handleFormInput(evt, config, input));
+  });
+}
   
-}
+const handleFormInput = ((evt, config, input) => {
+  const formElement = evt.currentTarget;
+  const inputElement = evt.target;
+  isValid(config, formElement, inputElement);
+});
 
-
-function handleFormSubmit(event, form) {
-  event.preventDefault();
-  console.log(form.checkValidity());
-  if (form.checkValidity()) {
-    alert('Форма валидна')
-  }
-  else {
-   alert('Форма невалидна')
-  }
-}
-
-function handleFormImput(event) {
+  
+function isValid(config, formElement, inputElement) {
   const input = event.target;
   const errorNode = document.querySelector(`#${input.id}-error`);
-  console.log(input.validity.valid)
+  console.log(input)
   if (input.validity.valid) {
-    errorNode.textContent = '';
+    errorNode.textContent = ""
   }
   else {
     errorNode.textContent = input.validationMessage;
   }
 }
-
-
-function togglbutton(form, config) {
-  const button = document.querySelector(config.submitButtonSelector);
-  button.classList.toggl()
-}
-
+  
 
 
 enableValidation({
-  formSelector: '.popup1',
-  inputSelector: '.input1'
-  //submitButtonSelector: '.popup__save',
+  formSelector: '.popup__form',
+  inputSelector: '.popup__field-item',
+  //submitButtonSelector: '.popup__button',
   //inactiveButtonClass: 'popup__button_disabled',
   //inputErrorClass: 'popup__input_type_error',
   //errorClass: 'popup__error_visible'
-})
+});
+
