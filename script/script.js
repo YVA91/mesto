@@ -20,8 +20,9 @@ const formPlaceReset = document.querySelector('#resetformnewplace')
 const formNameReset = document.querySelector('#resetformnewname')
 const popupForm = document.querySelectorAll('.popup');
 
-function openPopup(item) {
 
+function openPopup(item) {
+  resetValidationForm(config);
   item.classList.add('popup_opened');
   document.addEventListener('keydown', handleEcsClosePopup)
 };
@@ -109,7 +110,9 @@ function handleOpenPopupNewPlace () {
 }
 
 buttonNewName.addEventListener('click', handleOpenPopupNewName);
+
 buttonNewPlace.addEventListener('click', handleOpenPopupNewPlace);
+
 formNewName.addEventListener('submit', handleSaveNewName);
 formNewPhoto.addEventListener('submit', handleAddElement);
 buttonNewPlace.addEventListener('click', () => openPopup(formNewPhoto)); 
