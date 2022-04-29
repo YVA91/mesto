@@ -18,11 +18,10 @@ const figcaption = document.querySelector('.popup__item-title');
 const buttonCloseBigPhoto = document.querySelector('.popup__close_img');
 const formPlaceReset = document.querySelector('#resetformnewplace')
 const formNameReset = document.querySelector('#resetformnewname')
-const popupForm = document.querySelectorAll('.popup');
+const popupList = document.querySelectorAll('.popup');
 
 
 function openPopup(item) {
-  resetValidationForm(config);
   item.classList.add('popup_opened');
   document.addEventListener('keydown', handleEcsClosePopup)
 };
@@ -38,19 +37,6 @@ function handleEcsClosePopup (evt) {
     closePopup(escClosePopup)
   }
 }
-
-buttonCloseFormNewPhoto.addEventListener('click', handleCloseFormNewPhoto)
-
-function handleCloseFormNewPhoto() {
-  formPlaceReset.reset();
-  closePopup(formNewPhoto)
-};
-
-buttonCloseFormNewName.addEventListener('click', handleCloseFormNewName)
-
-function handleCloseFormNewName() {
-  closePopup(formNewName)
-};
 
 function handleSaveNewName(evt) {
   evt.preventDefault(); 
@@ -82,6 +68,19 @@ function handleOpenPhoto(element) {
   openPopup(buttonOpenImgPopup)
 };
 
+function handleOpenPopupNewName() {
+  nameInput.value = userName.textContent;
+  jobInput.value = userJop.textContent;
+  resetValidationForm(config, formNewName);
+  openPopup(formNewName)
+}
+
+function handleOpenPopupNewPlace() {
+  formPlaceReset.reset()
+  resetValidationForm(config, formNewPhoto);
+  openPopup(formNewPhoto)
+}
+
 function handleAddElement(evt) {
   evt.preventDefault();
   const putPlace = getElementPhoto(newTitle.value, newLink.value);
@@ -98,31 +97,22 @@ function removeElement(evt) {
   removePhoto.remove();
 }
 
-function handleOpenPopupNewName() {
-  nameInput.value = userName.textContent;
-  jobInput.value = userJop.textContent;
-  openPopup(formNewName)
-}
-
-function handleOpenPopupNewPlace () {
-  formPlaceReset.reset()
-  openPopup(formNewPhoto)
-}
+buttonCloseFormNewPhoto.addEventListener('click', () => closePopup(formNewPhoto));
+buttonCloseFormNewName.addEventListener('click', () => closePopup(formNewName));
+buttonCloseBigPhoto.addEventListener('click', () => closePopup(buttonOpenImgPopup));
 
 buttonNewName.addEventListener('click', handleOpenPopupNewName);
-
 buttonNewPlace.addEventListener('click', handleOpenPopupNewPlace);
 
 formNewName.addEventListener('submit', handleSaveNewName);
 formNewPhoto.addEventListener('submit', handleAddElement);
-buttonNewPlace.addEventListener('click', () => openPopup(formNewPhoto)); 
-buttonCloseBigPhoto.addEventListener('click', () => closePopup(buttonOpenImgPopup));
+
 
 initialCards.forEach(element => {
   photoList.append(getElementPhoto(element.name, element.link));
 });
 
-popupForm.forEach((element) => { 
+popupList.forEach((element) => { 
   element.addEventListener('click', (e) => {
       if (e.target.classList.contains('popup_opened')) {
           closePopup(element);

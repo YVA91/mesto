@@ -69,16 +69,13 @@ function hasInvalidInput (inputList) {
   });
 };
 
-function resetValidationForm (config) {
-  const formReset = Array.from(document.querySelectorAll(config.formSelector));
-  formReset.forEach((formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+function resetValidationForm(config, formReset) {
+  const inputList = Array.from(formReset.querySelectorAll(config.inputSelector));
     inputList.forEach((inputElement) => {
-      hideInputError(formElement, inputElement, config)
+      hideInputError(formReset, inputElement, config)
     })
-    const buttonElement = formElement.querySelector(config.submitButtonSelector);
+  const buttonElement = formReset.querySelector(config.submitButtonSelector);
     toggleButtonState(inputList, buttonElement, config);
-  })
 }
-
+  
 enableValidation(config)
