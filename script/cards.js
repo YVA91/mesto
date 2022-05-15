@@ -1,5 +1,4 @@
-import { photoBig, figcaption, openPopup, buttonOpenImgPopup } from './script.js'
-
+import { openPopup, buttonOpenImgPopup } from './script.js'
 export class Card {
   constructor(name, link, template) {
     this._name = name;
@@ -17,46 +16,38 @@ export class Card {
     this._element.querySelector('.photo__item-img').src = this._link;
     this._element.querySelector('.photo__item-img').alt = this._name;
     this._element.querySelector('.photo__item-title').textContent = this._name
-
-    this._buttonDeleteElement = this._element.querySelector('.photo__remove');
-    this._buttonLikeElement = this._element.querySelector('.photo__item-like');
-    this._buttonShowElement = this._element.querySelector('.photo__item-img');
-
-
-
-
+    this._clikDeletePhoto = this._element.querySelector('.photo__remove');
+    this._clikLikePhoto = this._element.querySelector('.photo__item-like');
+    this._clikOpenBigPhoto = this._element.querySelector('.photo__item-img');
 
     this._setEventListeners();
     return this._element;
   }
 
-
   _setEventListeners = () => {
-    this._buttonDeleteElement.addEventListener('click', () => {
+    this._clikDeletePhoto.addEventListener('click', () => {
       this._deleteCard();
     });
-    this._buttonLikeElement.addEventListener('click', () => {
+    this._clikLikePhoto.addEventListener('click', () => {
       this._likeCard();
     });
-    this._buttonShowElement.addEventListener('click', () => {
-      this._bigPhotoCard();
+    this._clikOpenBigPhoto.addEventListener('click', () => {
+      this._openBigPhoto ();
     });
   };
   
-
   _deleteCard = () => {
-    this._buttonDeleteElement.closest('.photo__item').remove();
+    this._clikDeletePhoto.closest('.photo__item').remove();
   };
 
   _likeCard = () => {
-    this._buttonLikeElement.classList.toggle('photo__item-like_actve');
+    this._clikLikePhoto.classList.toggle('photo__item-like_actve');
   };
 
-  _bigPhotoCard = () => {
-  photoBig.src = this._link;
-  photoBig.alt = this._name;
-  figcaption.textContent = this._name;
-  openPopup(buttonOpenImgPopup)
-};
-
+  _openBigPhoto = () => {
+    document.querySelector('.popup__item-img').src = this._link
+    document.querySelector('.popup__item-img').src = this._link
+    document.querySelector('.popup__item-title').textContent = this._name
+    openPopup(buttonOpenImgPopup)
+  };
 }

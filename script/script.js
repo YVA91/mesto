@@ -1,5 +1,5 @@
-
 import { Card } from "./cards.js";
+import { FormValidator } from "./validate.js";
 
 const initialCards = [
   {
@@ -38,18 +38,27 @@ const buttonNewPlace = document.querySelector('.profile__add-button')
 const formNewPhoto = document.querySelector('.popup_new-photo')
 const buttonCloseFormNewPhoto = document.querySelector('.popup__close_photo')
 const buttonCloseFormNewName = document.querySelector('.popup__close')
-const photoList = document.querySelector('.photo');
-const photoTemplate = document.querySelector('.photo-template');
 const newTitle = document.querySelector('#title');
 const newLink = document.querySelector('#link');
 export const buttonOpenImgPopup = document.querySelector('.popup_open-photo');
-export const photoBig = document.querySelector('.popup__item-img');
-export const figcaption = document.querySelector('.popup__item-title');
 const buttonCloseBigPhoto = document.querySelector('.popup__close_img');
 const formPlaceReset = document.querySelector('#resetformnewplace')
-const formNameReset = document.querySelector('#resetformnewname')
 const popupList = document.querySelectorAll('.popup');
 
+const config = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__field-item',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__field-item_error',
+  errorClass: '.popup__field-item-error_visible'
+})
+
+const formNewNameValidator = new FormValidator(config, formNewName);
+formNewNameValidator.enableValidation();
+
+const formNewPhotoValidator = new FormValidator(config, formNewPhoto);
+formNewPhotoValidator.enableValidation();
 
 export function openPopup(item) {
   item.classList.add('popup_opened');
@@ -78,13 +87,13 @@ function handleSaveNewName(evt) {
 function handleOpenPopupNewName() {
   nameInput.value = userName.textContent;
   jobInput.value = userJop.textContent;
-  //resetValidationForm(config, formNewName);
+  formNewNameValidator.resetValidationForm();
   openPopup(formNewName)
 }
 
 function handleOpenPopupNewPlace() {
   formPlaceReset.reset()
-  //resetValidationForm(config, formNewPhoto);
+  formNewPhotoValidator.resetValidationForm();
   openPopup(formNewPhoto)
 }
 
@@ -111,3 +120,11 @@ formNewName.addEventListener('submit', handleSaveNewName);
 formNewPhoto.addEventListener('submit', handleAddElement);
 
 initialCards.forEach(createPhoto);
+
+popupList.forEach((element) => {
+  element.addEventListener('click', (e) => {
+    if (e.target.classList.contains('popup_opened')) {
+      closePopup(element);
+    }
+  });
+});
