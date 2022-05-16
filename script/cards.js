@@ -45,8 +45,9 @@ export class Card {
   };
 
   _openBigPhoto = () => {
-    document.querySelector('.popup__item-img').src = this._link
-    document.querySelector('.popup__item-img').src = this._link
+    const popupitemImg = document.querySelector('.popup__item-img')
+    popupitemImg.src = this._link
+    popupitemImg.src = this._link
     document.querySelector('.popup__item-title').textContent = this._name
     openPopup(buttonOpenImgPopup)
   };
