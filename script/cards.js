@@ -1,4 +1,5 @@
-import { openPopup, buttonOpenImgPopup } from './script.js'
+import { buttonOpenImgPopup, figcaption, popupitemImg } from "./const.js";
+import { openPopup } from "./function.js";
 export class Card {
   constructor(name, link, template) {
     this._name = name;
@@ -13,12 +14,13 @@ export class Card {
 
   generateCard = () => {
     this._element = this._getTemplate();
-    this._element.querySelector('.photo__item-img').src = this._link;
-    this._element.querySelector('.photo__item-img').alt = this._name;
+    const photoItemsImg = this._element.querySelector('.photo__item-img')
+    photoItemsImg.src = this._link;
+    photoItemsImg.alt = this._name;
     this._element.querySelector('.photo__item-title').textContent = this._name
     this._clikDeletePhoto = this._element.querySelector('.photo__remove');
     this._clikLikePhoto = this._element.querySelector('.photo__item-like');
-    this._clikOpenBigPhoto = this._element.querySelector('.photo__item-img');
+    this._clikOpenBigPhoto = photoItemsImg;
 
     this._setEventListeners();
     return this._element;
@@ -37,7 +39,8 @@ export class Card {
   };
   
   _deleteCard = () => {
-    this._clikDeletePhoto.closest('.photo__item').remove();
+    this._element.remove();
+    this._element = null
   };
 
   _likeCard = () => {
@@ -45,10 +48,9 @@ export class Card {
   };
 
   _openBigPhoto = () => {
-    const popupitemImg = document.querySelector('.popup__item-img')
     popupitemImg.src = this._link
     popupitemImg.src = this._link
-    document.querySelector('.popup__item-title').textContent = this._name
+    figcaption.textContent = this._name
     openPopup(buttonOpenImgPopup)
   };
 }

@@ -1,32 +1,9 @@
 import { Card } from "./cards.js";
 import { FormValidator } from "./validate.js";
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
+import { initialCards } from "./arrayPhoto.js";
+import { config } from "./objectValidation.js";
+import { openPopup, closePopup } from "./function.js";
+import { buttonOpenImgPopup } from "./const.js";
 
 const nameInput = document.querySelector('#name');
 const jobInput = document.querySelector('#job'); 
@@ -40,42 +17,17 @@ const buttonCloseFormNewPhoto = document.querySelector('.popup__close_photo')
 const buttonCloseFormNewName = document.querySelector('.popup__close')
 const newTitle = document.querySelector('#title');
 const newLink = document.querySelector('#link');
-export const buttonOpenImgPopup = document.querySelector('.popup_open-photo');
 const buttonCloseBigPhoto = document.querySelector('.popup__close_img');
 const formPlaceReset = document.querySelector('#resetformnewplace')
 const popupList = document.querySelectorAll('.popup');
+const cardsPhoto = document.querySelector('.photo')
 
-const config = ({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__field-item',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__field-item_error',
-  errorClass: '.popup__field-item-error_visible'
-})
 
 const formNewNameValidator = new FormValidator(config, formNewName);
 formNewNameValidator.enableValidation();
 
 const formNewPhotoValidator = new FormValidator(config, formNewPhoto);
 formNewPhotoValidator.enableValidation();
-
-export function openPopup(item) {
-  item.classList.add('popup_opened');
-  document.addEventListener('keydown', handleEcsClosePopup)
-};
-
-function closePopup(item) {
-  item.classList.remove('popup_opened');
-  document.removeEventListener('keydown', handleEcsClosePopup)
-}
-
-function handleEcsClosePopup (evt) {
-  if (evt.key === "Escape") {
-    const escClosePopup = document.querySelector('.popup_opened');
-    closePopup(escClosePopup)
-  }
-}
 
 function handleSaveNewName(evt) {
   evt.preventDefault(); 
@@ -98,14 +50,15 @@ function handleOpenPopupNewPlace() {
 }
 
 function createPhoto (item) {
-  const card = new Card(item.name, item.link);
-  const cardElement = card.generateCard();
-  document.querySelector('.photo').append(cardElement);
+  const cards = new Card(item.name, item.link);
+  const cardElements = cards.generateCard();
+  return cardElements
 };
 
 function handleAddElement(evt) {
   evt.preventDefault();
-  createPhoto ({ name: newTitle.value, link: newLink.value });
+  const newCards = createPhoto({ name: newTitle.value, link: newLink.value });
+  cardsPhoto.prepend(newCards);
   closePopup(formNewPhoto);
 }
 
@@ -119,7 +72,11 @@ buttonNewPlace.addEventListener('click', handleOpenPopupNewPlace);
 formNewName.addEventListener('submit', handleSaveNewName);
 formNewPhoto.addEventListener('submit', handleAddElement);
 
-initialCards.forEach(createPhoto);
+initialCards.forEach ((item) => {
+  const newCards = createPhoto(item)
+  cardsPhoto.prepend(newCards);
+});
+
 
 popupList.forEach((element) => {
   element.addEventListener('click', (e) => {
