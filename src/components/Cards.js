@@ -8,7 +8,7 @@ export class Card {
   }
 
   _getTemplate = () => {
-    const template = document.querySelector('.photo-template').content.querySelector('.photo__item').cloneNode(true);
+    const template = document.querySelector(this._template).content.querySelector('.photo__item').cloneNode(true);
     return template;
   }
 
@@ -18,21 +18,21 @@ export class Card {
     photoAttributes.src = this._link;
     photoAttributes.alt = this._name;
     this._element.querySelector('.photo__item-title').textContent = this._name
-    this._clikDeletePhoto = this._element.querySelector('.photo__remove');
-    this._clikLikePhoto = this._element.querySelector('.photo__item-like');
-    this._clikOpenBigPhoto = photoAttributes;
+    this._photoDelete = this._element.querySelector('.photo__remove');
+    this._photoLike = this._element.querySelector('.photo__item-like');
+    this._bigPhotoOpen = photoAttributes;
     this._setEventListeners();
     return this._element;
   }
 
   _setEventListeners = () => {
-    this._clikDeletePhoto.addEventListener('click', () => {
+    this._photoDelete.addEventListener('click', () => {
       this._deleteCard();
     });
-    this._clikLikePhoto.addEventListener('click', () => {
+    this._photoLike.addEventListener('click', () => {
       this._likeCard();
     });
-    this._clikOpenBigPhoto.addEventListener('click', () => {
+    this._bigPhotoOpen.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link)
     });
   };
@@ -43,6 +43,6 @@ export class Card {
   };
 
   _likeCard = () => {
-    this._clikLikePhoto.classList.toggle('photo__item-like_actve');
+    this._photoLike.classList.toggle('photo__item-like_actve');
   };
 }
