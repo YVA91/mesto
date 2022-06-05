@@ -4,13 +4,13 @@ import { Card } from "../components/Cards.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { initialCards } from "../utils/arrayPhoto.js";
 import { config } from "../utils/objectValidation.js";
-import { buttonOpenImgPopup } from "../utils/const.js";
+import { selectorImgPopup } from "../utils/const.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 
-import { nameInput, jobInput, formNewName, userName, userJob, buttonNewName, buttonNewPlace, formNewPhoto, newTitle, newLink, cardsPlace, popupTemplate } from "../utils/const.js";
+import { nameInput, jobInput, formNewName, userName, userJob, buttonNewName, buttonNewPlace, formNewPhoto, newTitle, newLink, cardsPlace, popupTemplate, selectorPopupNewName, selectorPopupNewPhoto } from "../utils/const.js";
 
 // Валидация
 
@@ -41,7 +41,7 @@ const сardList = new Section({
 
 //Открытие картинок
 
-const popupBigImg = new PopupWithImage(buttonOpenImgPopup);
+const popupBigImg = new PopupWithImage(selectorImgPopup);
 
 function handleCardClick(name, link) {
   popupBigImg.open(name, link);
@@ -52,7 +52,7 @@ popupBigImg.setEventListeners()
 //Создание новых карточек с местами 
 
 const popupNewPhoto = new PopupWithForm ({ 
-  popupElement: formNewPhoto,
+  popupSelector: selectorPopupNewPhoto,
   handleSubmitForm: () => {
     сardList.addItem(createCard(newTitle.value, newLink.value));
   }
@@ -70,7 +70,7 @@ popupNewPhoto.setEventListeners()
 const newInfoProfile = new UserInfo( userName, userJob )
 
 const popupNewName= new PopupWithForm({ 
-  popupElement: formNewName, 
+  popupSelector: selectorPopupNewName, 
   handleSubmitForm: () => {
     newInfoProfile.setUserInfo(nameInput.value, jobInput.value)
   }

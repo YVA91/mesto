@@ -14,13 +14,12 @@ export class Card {
 
   generateCard = () => {
     this._element = this._getTemplate();
-    const photoAttributes = this._element.querySelector('.photo__item-img')
-    photoAttributes.src = this._link;
-    photoAttributes.alt = this._name;
+    this._photoItems = this._element.querySelector('.photo__item-img')
+    this._photoItems.src = this._link;
+    this._photoItems.alt = this._name;
     this._element.querySelector('.photo__item-title').textContent = this._name
     this._photoDelete = this._element.querySelector('.photo__remove');
     this._photoLike = this._element.querySelector('.photo__item-like');
-    this._bigPhotoOpen = photoAttributes;
     this._setEventListeners();
     return this._element;
   }
@@ -32,7 +31,7 @@ export class Card {
     this._photoLike.addEventListener('click', () => {
       this._likeCard();
     });
-    this._bigPhotoOpen.addEventListener('click', () => {
+    this._photoItems.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link)
     });
   };
