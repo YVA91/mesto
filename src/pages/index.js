@@ -1,16 +1,16 @@
 import '../pages/index.css'
 
 import { Card } from "../components/Cards.js";
-import { FormValidator } from "../components/Validate.js";
-import { initialCards } from "../components/arrayPhoto.js";
-import { config } from "../components/objectValidation.js";
-import { buttonOpenImgPopup } from "../components/const.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { initialCards } from "../utils/arrayPhoto.js";
+import { config } from "../utils/objectValidation.js";
+import { buttonOpenImgPopup } from "../utils/const.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 
-import { nameInput, jobInput, formNewName, userName, userJob, buttonNewName, buttonNewPlace, formNewPhoto, newTitle, newLink, cardsPlace, popupTemplate } from "../components/const.js";
+import { nameInput, jobInput, formNewName, userName, userJob, buttonNewName, buttonNewPlace, formNewPhoto, newTitle, newLink, cardsPlace, popupTemplate } from "../utils/const.js";
 
 // Валидация
 
