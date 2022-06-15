@@ -12,7 +12,10 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватарка">
+        <div class="profile__avatar-conteiner">
+          <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватарка">
+          <button class="profile__avatar-edit" type="button" aria-label="изменить"></button>
+        </div>
         <div>
           <div class="profile__name-edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -30,7 +33,10 @@
               <button class="photo__remove" type="button" aria-label="удалить фото"></button>
               <div class="photo__item-signature">
                 <h2 class="photo__item-title"></h2>
-                <button class="photo__item-like" type="button" aria-label="лайк"></button>
+                <div class="photo__likes-conteiner">
+                  <button class="photo__item-like" type="button" aria-label="лайк"></button>
+                  <p class="photo__likes-counter">1</p>
+                </div>
               </div>
             </li>
           </template>
@@ -81,7 +87,7 @@
         </div>
       </section>
       
-      <section class="popup popup_open-photo">
+      <section class="popup popup_open-photo ">
           <figure class="popup__figure">
             <button class="popup__close popup__close_img" type="reset" aria-label="закрыть"></button>
             <img class="popup__item-img" src="#" alt="#">
@@ -90,6 +96,34 @@
             </figcaption>
           </figure>
       </section>
+
+      <section class="popup popup_confirm">
+        <div class="popup__container">
+          <button class="popup__close popup__close_photo" type="reset" aria-label="закрыть"></button>
+          <form name="profile" class="popup__form">
+            <h2 class="popup__title popup__title_indent-confirm">Вы уверены?</h2>
+            <button class="popup__save popup__save_indent-confirm" type="submit" aria-label="Да">Да</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="popup popup_new-avatar">
+        <div class="popup__container">
+          <button class="popup__close popup__close_photo" type="reset" aria-label="закрыть"></button>
+          <form name="profile" class="popup__form" id="resetformnewplace" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <fieldset class="popup__form-item">
+              <label class="popup__field">
+                <input class="popup__field-item" id="avatar" type="url" value="" placeholder="Ссылка на картинку" minlength="2"
+                  maxlength="200" required>
+                <span class="popup__field-item-error" id="avatar-error"></span>
+              </label>
+            </fieldset>
+            <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
+          </form>
+        </div>
+      </section>
+
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
