@@ -20,7 +20,6 @@ setEventListeners() {
   this._popupForm.addEventListener('submit', (e) => {
     e.preventDefault();
     this._handleSubmitForm(this._getInputValues());
-    this.close()
       })
   }
 

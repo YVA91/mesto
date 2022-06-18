@@ -2,6 +2,8 @@ export class FormValidator {
   constructor(config, formValidation) {
     this._config = config
     this._formValidation = formValidation;
+    this._inputList = Array.from(this._formValidation.querySelectorAll(this._config.inputSelector));
+    this._buttonElement = this._formValidation.querySelector(this._config.submitButtonSelector);
   }
 
   enableValidation = () => {
@@ -9,8 +11,6 @@ export class FormValidator {
   };
   
   _setEventListeners = () => {
-    this._inputList = Array.from(this._formValidation.querySelectorAll(this._config.inputSelector));
-    this._buttonElement = this._formValidation.querySelector(this._config.submitButtonSelector);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);

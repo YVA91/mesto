@@ -2,7 +2,6 @@ import '../pages/index.css'
 
 import { Card } from "../components/Cards.js";
 import { FormValidator } from "../components/FormValidator.js";
-import { initialCards } from "../utils/arrayPhoto.js";
 import { config } from "../utils/objectValidation.js";
 import { selectorImgPopup } from "../utils/const.js";
 import { Section } from "../components/Section.js";
@@ -20,10 +19,11 @@ const newInfoProfile = new UserInfo(userName, userJob, userAratar)
 
 let userId = null;
 
-api.getUserInfo("users/me")
-  .then((data) => {
+Promise.all([api.getUserInfo("users/me"), api.getCreateCard("cards")])
+  .then(([data, dataCards]) => {
     newInfoProfile.setUserInfo(data);
     userId = data._id;
+    сardList.renderItems(dataCards);
   })
   .catch((err) => {
     console.log(err);
@@ -36,6 +36,7 @@ const popupNewName = new PopupWithForm({
     api.patchUserInfo("users/me", nameInput.value, jobInput.value)
       .then((data) => {
         newInfoProfile.setUserInfo(data);
+        popupNewName.close()
       })
       .catch((err) => {
         console.log(err);
@@ -64,6 +65,7 @@ const popanNewAvatar = new PopupWithForm({
     api.patchUserAvatar("users/me/avatar", avatarImput.value,)
       .then((data) => {
         newInfoProfile.setUserInfo(data);
+        popanNewAvatar.close()
       })
       .catch((err) => {
         console.log(err);
@@ -80,9 +82,6 @@ buttonNewAvatar.addEventListener('click', function () {
 });
 
 popanNewAvatar.setEventListeners() 
-
-
-// Валидация
 
 const formNewNameValidator = new FormValidator(config, formNewName);
 formNewNameValidator.enableValidation();
@@ -150,14 +149,6 @@ const сardList = new Section({
   cardsPlace
 );
 
-api.getCreateCard("cards")
-  .then((data) => {
-    сardList.renderItems(data);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-
 const popupNewPhoto = new PopupWithForm({
   popupSelector: selectorPopupNewPhoto,
   handleSubmitForm: () => {
@@ -165,6 +156,7 @@ const popupNewPhoto = new PopupWithForm({
     api.postNewPhoto("cards", newTitle.value, newLink.value)
       .then((data) => {
         сardList.addItem(createCard(data));
+        popupNewPhoto.close()
       })
       .catch((err) => {
         console.log(err);
