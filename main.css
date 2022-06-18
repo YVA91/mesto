@@ -13,7 +13,7 @@
 .profile__name-edit{align-items:baseline;display:flex;margin:0 0 16px}@media screen and (max-width:425px){.profile__name-edit{justify-content:center}}
 .photo{display:grid;gap:20px 17px;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));list-style:none;margin:0 auto;padding:0}
 .photo__item{background-color:#fff;border-radius:10px;justify-self:center;max-width:282px;overflow:hidden;position:relative}
-.photo__item-img{display:block;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}
+.photo__item-img{cursor:pointer;display:block;height:282px;-o-object-fit:cover;object-fit:cover;width:282px}
 .photo__item-signature{align-items:center;display:flex;flex-shrink:0;justify-content:space-between;margin:25px 20px 31px 21px;max-width:246px}
 .photo__item-title{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;text-rendering:optimizeLegibility;font-family:Inter,Arial,sans-serif;font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
 .photo__item-like{background:url(32945895bbde7c7cc8ea.png);background-position:50%;background-repeat:no-repeat;border:none;cursor:pointer;flex-shrink:0;height:19px;margin:0 0 3px;padding:0;transition:opacity .5s;width:22px}.photo__item-like:hover{opacity:.5}
