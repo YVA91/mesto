@@ -3,7 +3,7 @@ export class Api {
     this._url = url;
     this._token = token;
   }
-
+  
   _report(res) {
     if (res.ok) {
       return res.json();
@@ -58,7 +58,6 @@ export class Api {
       .then(this._report)
   }
 
-
   postNewPhoto(serverNewCard, name, link) {
     return fetch(`${this._url}/${serverNewCard}`, {
      method: 'POST',
@@ -84,13 +83,23 @@ export class Api {
       .then(this._report)
   }
 
-  
- 
+  putLike(cards, cardsId, likes) {
+    return fetch(`${this._url}/${cards}/${cardsId}/${likes}`, {
+      method: 'PUT',
+      headers: {
+        authorization: this._token
+      }
+    })
+      .then(this._report)
+  }
 
-
-
-
-      
-  
-
+  deleteLike(cards, cardsId, likes) {
+    return fetch(`${this._url}/${cards}/${cardsId}/${likes}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token
+      }
+    })
+      .then(this._report)
+  }
 }

@@ -93,24 +93,13 @@ formNewPhotoValidator.enableValidation();
 const formNewAvatarValidator = new FormValidator(config, formNewAvatar);
 formNewAvatarValidator.enableValidation();
 
-
-// Создание начальных карточек
-
 const popupConfirm = new PopupWithConfirmation({
   popupSelector: selectorPopupConfirm
 })
 popupConfirm.setEventListeners()
 
-
-
-
-
 function createCard(data) {
-  const card = new Card(
-    data,
-    userId,
-    popupTemplate,
-    handleCardClick,
+  const card = new Card(data, userId, popupTemplate, handleCardClick,
     {
       handleRemoveButtonClick: () => {
         popupConfirm.open()
@@ -126,14 +115,32 @@ function createCard(data) {
             .finally(() => {
               renderLoading(formNewPhoto, false)
             });
-
         })
-    }
+      },
+      handlelikeClick: () => {
+        if (card.someLikes()) {
+          api.deleteLike("cards", data._id, 'likes')
+            .then((data) => {
+              card.likes(data.likes)
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        }
+        else {
+          api.putLike("cards", data._id, 'likes')
+            .then((data) => {
+              card.likes(data.likes)
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        }
+      }
   })
   const cardElement = card.generateCard();
   return cardElement
 }
-
 
 const сardList = new Section({
   renderer: (item) => {
@@ -168,17 +175,12 @@ const popupNewPhoto = new PopupWithForm({
   }
 })
 
-
-
 buttonNewPlace.addEventListener('click', function () {
   formNewPhotoValidator.resetValidationForm();
   popupNewPhoto.open();
 });
 
 popupNewPhoto.setEventListeners()
-
-
-//Открытие картинок
 
 const popupBigImg = new PopupWithImage(selectorImgPopup);
 
